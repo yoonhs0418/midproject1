@@ -1,0 +1,3 @@
+# k8s Secret 실제 값 파일은 커밋 금지 (example만 커밋)
+kubernetes/secret.yaml
+.env

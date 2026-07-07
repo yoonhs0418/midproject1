@@ -28,9 +28,15 @@ spec:
         - name: MYSQL_DATABASE
           value: "mybank"
         - name: MYSQL_USER
-          value: "student"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-user
         - name: MYSQL_PASSWORD
-          value: "abc123"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
         - name: PORT
           value: "8000"
 ---

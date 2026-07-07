@@ -22,7 +22,10 @@ spec:
             - name: NODE_ENV
               value: "production"
             - name: JWT_SECRET
-              value: "thisIsMySecretKey"
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: jwt-secret
             - name: PORT
               value: "443"
             - name: BACKEND_HOST
@@ -34,13 +37,22 @@ spec:
             - name: CHATBOT_PORT
               value: "8000"
             - name: CLIENT_ID
-              value: "_6vvNxz9b7hiBBvaP7T9"
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: naver-client-id
             - name: CLIENT_SECRET
-              value: "j2JaqWr4EH"
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: naver-client-secret
             - name: REDIRECT_URI
-              value: "https://52.79.248.157:30001/naverlogin/login"
+              value: "https://<SERVICE_HOST>:30001/naverlogin/login"
             - name: JAVASCRIPT_APPKEY
-              value: "4b5ecb6281d617d7a988622ad24d251b"
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: javascript-appkey
 --- 
 apiVersion: v1 
 kind: Service 

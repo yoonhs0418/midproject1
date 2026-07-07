@@ -20,13 +20,22 @@ spec:
          - "--bind-address=0.0.0.0"
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "abc123"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-root-password
         - name: MYSQL_DATABASE
           value: "mybank"
         - name: MYSQL_USER
-          value: "student"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-user
         - name: MYSQL_PASSWORD
-          value: "abc123"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
 
 ---
 apiVersion: v1
